@@ -30,3 +30,19 @@ def GiniIndex(p):
     for item,weight in sorted(p.items(),key=itemgetter(1)):
         G += (2*j -n -1)*weight
     return G / float(n-1)
+
+
+#将数据集随机分成训练集合测试集
+def SplitData(data,M,k,seed):
+    test = []
+    train = []
+    random.seed(seed)
+    for user,item in data:
+        if random.randint(0,M) == k:
+            test.append([user,item])
+        else:
+            train.append([user,item])
+        return train,test
+
+    
+    
